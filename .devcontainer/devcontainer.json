@@ -1,0 +1,15 @@
+{
+                // "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+            // "postCreateCommand": "sudo apk update && sudo apk add aws-cli",
+              "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y awscli",
+    "remoteEnv": {
+    "AWS_CLI_AUTO_PROMPT": "on-partial",
+     "TZ": "Europe/Chisinau",
+      "TEST_REBUILD": "hello"
+  }
+}
+
+
+
+
