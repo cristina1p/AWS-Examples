@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+ echo "== create bucket"
+
+# Check for bucket name
+if [ "$#" -eq 0 ]; then
+  echo "Error: There needs to be a bucket name eg. ./bucket my-bucket-name"
+  exit 1
+fi
+
+BUCKET_NAME="$1"
+
+# Get region from environment or default to us-west-2
+REGION=${AWS_DEFAULT_REGION:-us-west-2}
+
+#https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
+
+aws s3api create-bucket --bucket "$BUCKET_NAME" \
+--create-bucket-configuration LocationConstraint="$REGION" \
+--query Location \
+--output text

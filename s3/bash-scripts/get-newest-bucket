@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+aws s3api list-buckets | jq '.Buckets | sort_by(.CreationDate)[-1]'
+
+echo "== get newest bucket"

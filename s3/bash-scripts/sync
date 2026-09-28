@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+echo "== sync"
+
+# Exit immediately if any command returns a non-zero status
+set -e
+
+# Check for bucket name
+if [ -z "$1" ]; then
+  echo "Error: There needs to be a bucket name eg. ./bucket my-bucket-name"
+  exit 1
+fi
+
+# Check for filename prefix
+if [ -z "$2" ]; then
+  echo "Error: There needs to be a filename prefix eg. ./bucket my-bucket-name my-filename-prefix"
+  exit 1
+fi
+
+
+BUCKET_NAME="$1"
+FILENAME_PREFIX="$2"
+
+# https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object.html
+
+# Define output directory name
+OUTPUT_DIR="/tmp/s3-bash-script"
+
+# Remove the folder if already exists
+rm -rf "$OUTPUT_DIR"
+
+# lets create output folder if it doesn't exists (-p prevents errors if it exists)
+mkdir -p "$OUTPUT_DIR"
+
+# generate arandom number of files
+NUM_FILES=$(( ( RANDOM % 6 ) + 5 ))
+
+for i in $(seq 1 $NUM_FILES); do
+  # 3. Save files inside the output directory path
+  FILENAME="$OUTPUT_DIR/${FILENAME_PREFIX}_$i.txt"
+  touch "$FILENAME"
+  echo "Created: $FILENAME"
+done
+
+tree $OUTPUT_DIR
+
+aws s3 sync $OUTPUT_DIR s3://$BUCKET_NAME/files
