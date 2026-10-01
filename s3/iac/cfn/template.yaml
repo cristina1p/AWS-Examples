@@ -1,0 +1,6 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS Solutions Architect Associate - Simple S3 Bucket Template
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+# We do not need to supply a Bucket Name as AWS will generate a random name
