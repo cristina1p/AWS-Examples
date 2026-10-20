@@ -3,7 +3,7 @@
   "features": {
     "ghcr.io/devcontainers/features/terraform:1": {}
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y awscli && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-x64.tar.gz && sudo mkdir -p /opt/microsoft/powershell/7 && sudo tar zxf powershell-7.4.5-linux-x64.tar.gz -C /opt/microsoft/powershell/7 && sudo chmod +x /opt/microsoft/powershell/7/pwsh && sudo ln -sf /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh && rm powershell-7.4.5-linux-x64.tar.gz",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y awscli && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-x64.tar.gz && sudo mkdir -p /opt/microsoft/powershell/7 && sudo tar zxf powershell-7.4.5-linux-x64.tar.gz -C /opt/microsoft/powershell/7 && sudo chmod +x /opt/microsoft/powershell/7/pwsh && sudo ln -sf /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh && rm powershell-7.4.5-linux-x64.tar.gz && sudo apt-get update && sudo apt-get install -y python3-venv python3-pip && sudo npm i -g aws-cdk",
     "remoteEnv": {
     "AWS_CLI_AUTO_PROMPT": "on-partial",
      "TZ": "Europe/Chisinau",
